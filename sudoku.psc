@@ -6,6 +6,9 @@ procédure affichegrille()
 procédure menu()
 //affiche le menu et retourne le choix de l'utilisateur
 
+fonction verificationSupp()
+//verifie que la validité des coordonnées et que la case selectionner n'est pas une valeur de la grille de base    
+retourne verifsupp
 
 fonction verificationCoordonnées()
 //verifie que les coordonnes sont dans l'intervalle A-I en ordonnes et l'intervalle 1-9 en abscisse
@@ -15,8 +18,11 @@ fonction verificationValeur()
 //verifie que la valeur est dans l'intervalle 1-9 et que la valeur n'est pas deja presente dans la ligne/colonne et carre de 3x3
 retourne verifV
 
-procédure ajoutvaleur() 
+procédure ajoutValeur() 
 //ajout de la valeur dans la grille de sudoku
+
+procédure suppValeur()
+//supprime une valeur
 
 
 debut
@@ -31,7 +37,7 @@ tant qu'il y a des case a 0 faire
     si choixmenu == 1 //ajout valeur
         écrireEcran("Séléctionner une case");
         lireClavier(coordonnées);
-        si verifC == 1
+        si verifC == 1 //les coordonnées sont valide
             écrireEcran("valeur ?");
             lireClavier(valeur);
             si verifV == 1
@@ -40,23 +46,33 @@ tant qu'il y a des case a 0 faire
             affichegrille();   
 
 
-        sinon si verifC == 0
+        sinon si verifC == 0 //coordonnées non valide
             écrireEcran("erreur: veuiller entrer des coordonnées valide.");
         finsi
 
 
+    
 
     sinon si menu == 2 //supprimer une valeur
+        écrireEcran("Séléctionner une case");
+        lireClavier(coordonnées);
+        si verifSupp == 1 
+            suppValeur(coordonnées);
+        
+        sinon si verifSupp == 0 
+            écrireEcran("impossible de supprimer une valeur de la grille de base");
+            
+
+
+
+    
 
 
 
 
     sinon si menu == 3 //arreter la partie 
+    fin si 
 finfaire
-
-
-
-
 
 
 
