@@ -61,7 +61,9 @@ tant qu'il y a des case a 0 faire
         
         sinon si verifSupp == 0 
             écrireEcran("impossible de supprimer une valeur de la grille de base");
-            
+        fin si
+        
+                
 
 
 
