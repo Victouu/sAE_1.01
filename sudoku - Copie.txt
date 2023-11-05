@@ -28,8 +28,6 @@ procédure ajoutValeur(entF valeur)
 procédure suppValeur(entF coordonnées)
 //supprime une valeur
 
-procédure lancerpartie();
-//lance une nouvelle partie
 
 debut
 //variables
@@ -47,29 +45,29 @@ tant que (verif0 == 0)faire
     menu();
     lireClavier(choixmenu);
     si (choixmenu == 1) //ajout valeur
-        écrireEcran("Séléctionner une case\n");
+        écrireEcran("Séléctionner une case");
         lireClavier(coordonnées);
         verificationCoordonnées(entE coordonnées, sortE verifC);
 
         si (verifC == 1) //les coordonnées sont valide
-            écrireEcran("valeur ?\n");
+            écrireEcran("valeur ?");
             lireClavier(valeur);
             verificationValeur(entE valeur, sortE verifV)
 
             si (verifV == 1) //la valeur est valide
                 ajoutvaleur(entE valeur);
             sinon si (verifV == 0)//la valeur est invalide
-                écrireEcran("valeur invalide: reessayer en verifiant ques la valeur est bien comprise entre 1 et 9 et que la valeur n'est pas deja presente dans la ligne/colonne\n");
+                écrireEcran("valeur invalide: reessayer en verifiant ques la valeur est bien comprise entre 1 et 9 et que la valeur n'est pas deja presente dans la ligne/colonne");
             fin si
             affichegrille();   
 
 
         sinon si (verifC == 0) //coordonnées non valide
-            écrireEcran("erreur: veuiller entrer des coordonnées valide.\n");
+            écrireEcran("erreur: veuiller entrer des coordonnées valide.");
         finsi
 
     sinon si (menu == 2) //supprimer une valeur
-        écrireEcran("Séléctionner une case\n");
+        écrireEcran("Séléctionner une case");
         lireClavier(coordonnées);
         verificationSupp(sortE verifSupp);
         si (verifSupp == 1) 
@@ -77,7 +75,7 @@ tant que (verif0 == 0)faire
 
         
         sinon si (verifSupp == 0)
-            écrireEcran("impossible de supprimer une valeur de la grille de base\n");
+            écrireEcran("impossible de supprimer une valeur de la grille de base");
         fin si
         affichegrille();\
 
@@ -88,8 +86,5 @@ tant que (verif0 == 0)faire
 finfaire
 
 écrireEcran("fin de partie !"\n);
-écrireEcran("rejouer ? o/n"\n);
-si (rejouer == o)
-    lancerpartie();
-sinon 
+
 fin
