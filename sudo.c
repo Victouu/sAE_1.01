@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define TAILLE 9
@@ -64,17 +64,72 @@ void afficherGrille(tGrille grille1)
     printf("    +---------+---------+---------+\n");
 }
 
-void saisir()
+int compteZero(tGrille grille1)
 {
+    int col, ligne, nbzero;
+    nbzero = 0;
+    for (ligne = 0; ligne < TAILLE; ligne++)
+    {
+        for (col = 0; col < TAILLE; col++)
+        {
+            if (grille1[ligne][col] == 0)
+            {
+                nbzero++;
+            }
+        }
+    }
+    return nbzero;
+}
+
+void saisir(int *valeur)
+{
+    char val[2];
+    scanf("%s", val);
+
+    if (sscanf(val, "%d", valeur) != 0 && *valeur >= 1 && *valeur <= 9)
+    {
+    }
+
+    else
+    {
+        while (sscanf(val, "%d", valeur) == 0 || *valeur < 1 || *valeur > 9)
+        {
+            printf("La valeur saisie doit etre un entier entre 1 et 9\n");
+            printf("valeur ?\n");
+            scanf("%s", val);
+        }
+    }
 }
 
 int main()
 {
     tGrille grille1;
-    int numLigne, numColonne, valeur;
+    int numLigne, numColonne, valeur, nbZero;
 
     chargerGrille(grille1);
 
-    afficherGrille(grille1);
-    return 0;
+    nbZero = compteZero(grille1);
+
+    while (nbZero != 0)
+    {
+        afficherGrille(grille1);
+        printf("Coordonees ? (ligne puis colonne)\n");
+        saisir(&numLigne);
+        saisir(&numColonne);
+        numLigne = numLigne - 1;
+        numColonne = numColonne - 1;
+        if (grille1[numLigne][numColonne] != 0)
+        {
+            printf("Impossible, la case n'est pas libre.\n");
+        }
+        else
+        {
+            printf("valeur?\n");
+            saisir(&valeur);
+            grille1[numLigne][numColonne] = valeur;
+            nbZero = compteZero(grille1);
+        }
+    }
+
+    return EXIT_SUCCESS;
 }
