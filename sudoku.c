@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define TAILLE 9
 
@@ -34,7 +35,7 @@ void afficherGrille(tGrille grille1)
 
     for (ligne = 0; ligne < TAILLE; ligne++)
     {
-        if (ligne == 3 || ligne == 6 || ligne == 9)
+        if (ligne == 3 || ligne == 6)
         {
             printf("    +---------+---------+---------+\n");
         }
@@ -99,6 +100,9 @@ void saisir(int *valeur)
             scanf("%s", val);
         }
     }
+}
+bool possible(tGrille grille1, int numligne, int numcol, int valeur)
+{
 }
 
 int main()
