@@ -101,14 +101,59 @@ void saisir(int *valeur)
         }
     }
 }
+
 bool possible(tGrille grille1, int numligne, int numcol, int valeur)
 {
+    int ligne, col;
+    bool verifligne, verifcol, result;
+    // check ligne
+    ligne = numligne;
+    {
+        for (col = 0; col < TAILLE; col++)
+        {
+            if (grille1[ligne][col] == valeur)
+            {
+                verifligne = false;
+            }
+            else
+            {
+                verifligne = true;
+            }
+        }
+    }
+    // check col
+    for (ligne = 0; ligne < TAILLE; ligne++)
+    {
+        col = numcol;
+        {
+            if (grille1[ligne][col] == valeur)
+            {
+                verifcol = false;
+            }
+            else
+            {
+                verifcol = true;
+            }
+        }
+    }
+    // check carre
+    if (verifcol == true && verifligne == true)
+    {
+        result = true;
+        return result;
+    }
+    else
+    {
+        result = false;
+        return result;
+    }
 }
 
 int main()
 {
     tGrille grille1;
     int numLigne, numColonne, valeur, nbZero;
+    bool verif;
 
     chargerGrille(grille1);
 
@@ -130,10 +175,19 @@ int main()
         {
             printf("valeur?\n");
             saisir(&valeur);
-            grille1[numLigne][numColonne] = valeur;
-            nbZero = compteZero(grille1);
+            verif = possible(grille1, numLigne, numColonne, valeur);
+            if (verif == true)
+            {
+                grille1[numLigne][numColonne] = valeur;
+                nbZero = compteZero(grille1);
+            }
+            else
+            {
+                printf("Valeur deja presente dans la ligne/la colonne/carre de 3*3\n");
+            }
         }
     }
+    printf("Grille pleine, fin de partie");
 
     return EXIT_SUCCESS;
 }
