@@ -108,17 +108,17 @@ bool possible(tGrille grille1, int numligne, int numcol, int valeur)
     bool verifligne, verifcol, result;
     // check ligne
     ligne = numligne;
+
+    for (col = 0; col < TAILLE; col++)
     {
-        for (col = 0; col < TAILLE; col++)
+        if (grille1[ligne][col] == valeur)
         {
-            if (grille1[ligne][col] == valeur)
-            {
-                verifligne = false;
-            }
-            else if (grille1[ligne][col] != valeur && verifligne != false)
-            {
-                verifligne = true;
-            }
+            verifligne = false;
+        }
+        else if (grille1[ligne][col] != valeur && verifligne != false)
+        {
+
+            verifligne = true;
         }
     }
     // check col
@@ -130,8 +130,9 @@ bool possible(tGrille grille1, int numligne, int numcol, int valeur)
             {
                 verifcol = false;
             }
-            else if (grille1[ligne][col] != valeur && verifligne != false)
+            else if (grille1[ligne][col] != valeur && verifcol != false)
             {
+
                 verifcol = true;
             }
         }
@@ -142,7 +143,7 @@ bool possible(tGrille grille1, int numligne, int numcol, int valeur)
         result = true;
         return result;
     }
-    else
+    else if (verifcol == false && verifligne == false)
     {
         result = false;
         return result;
