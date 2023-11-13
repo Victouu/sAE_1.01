@@ -115,7 +115,7 @@ bool possible(tGrille grille1, int numligne, int numcol, int valeur)
             {
                 verifligne = false;
             }
-            else
+            else if (grille1[ligne][col] != valeur && verifligne != false)
             {
                 verifligne = true;
             }
@@ -130,7 +130,7 @@ bool possible(tGrille grille1, int numligne, int numcol, int valeur)
             {
                 verifcol = false;
             }
-            else
+            else if (grille1[ligne][col] != valeur && verifligne != false)
             {
                 verifcol = true;
             }
@@ -173,7 +173,7 @@ int main()
         }
         else
         {
-            printf("valeur?\n");
+            printf("valeur ?\n");
             saisir(&valeur);
             verif = possible(grille1, numLigne, numColonne, valeur);
             if (verif == true)
