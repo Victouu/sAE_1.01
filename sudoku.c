@@ -104,41 +104,24 @@ void saisir(int *valeur)
 
 bool possible(tGrille grille1, int numligne, int numcol, int valeur)
 {
-    int ligne, col;
-    bool verifligne, verifcol, result;
-    // check ligne
-    ligne = numligne;
 
-    for (col = 0; col < TAILLE; col++)
+    for (int col = 0; col < TAILLE; col++)
     {
-        if (grille1[ligne][col] == valeur)
+        if (grille1[numligne][col] == valeur)
         {
-            verifligne = false;
-        }
-        else if (grille1[ligne][col] != valeur && verifligne != false)
-        {
-
-            verifligne = true;
+            return false;
         }
     }
-    // check col
-    for (ligne = 0; ligne < TAILLE; ligne++)
-    {
-        col = numcol;
-        {
-            if (grille1[ligne][col] == valeur)
-            {
-                verifcol = false;
-            }
-            else if (grille1[ligne][col] != valeur && verifcol != false)
-            {
 
-                verifcol = true;
-            }
+    for (int ligne = 0; ligne < TAILLE; ligne++)
+    {
+        if (grille1[ligne][numcol] == valeur)
+        {
+            return false;
         }
     }
     // check carre
-    if (verifcol == true && verifligne == true)
+    /**if (verifcol == true && verifligne == true)
     {
         result = true;
         return result;
@@ -147,7 +130,8 @@ bool possible(tGrille grille1, int numligne, int numcol, int valeur)
     {
         result = false;
         return result;
-    }
+    }*/
+    return true;
 }
 
 int main()
